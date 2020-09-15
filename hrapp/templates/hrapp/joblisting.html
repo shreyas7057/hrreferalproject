@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block title %}All Jobs{% endblock title %}
+
+
+{% block custom_css %}
+<style>
+    :root {
+        --uim-primary-opacity: 1;
+        --uim-secondary-opacity: 0.70;
+        --uim-tertiary-opacity: 0.50;
+        --uim-quaternary-opacity: 0.25;
+        --uim-quinary-opacity: 0;
+    }
+
+    .uim-svg {
+        display: inline-block;
+        height: 1em;
+        vertical-align: -0.125em;
+        font-size: inherit;
+        fill: var(--uim-color, currentColor);
+    }
+
+    .uim-svg svg {
+        display: inline-block;
+    }
+
+    .uim-primary {
+        opacity: var(--uim-primary-opacity);
+    }
+
+    .uim-secondary {
+        opacity: var(--uim-secondary-opacity);
+    }
+
+    .uim-tertiary {
+        opacity: var(--uim-tertiary-opacity);
+    }
+
+    .uim-quaternary {
+        opacity: var(--uim-quaternary-opacity);
+    }
+
+    .uim-quinary {
+        opacity: var(--uim-quinary-opacity);
+    }
+</style>
+
+{% endblock custom_css %}
+
+{% block body %}
+
+
+<!-- Hero Start -->
+<section class="bg-half bg-light d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h4 class="title"> Jobs / Careers </h4>
+                    <div class="page-next">
+                        <nav aria-label="breadcrumb" class="d-inline-block">
+                            <ul class="breadcrumb bg-white rounded shadow mb-0">
+                                <li class="breadcrumb-item"><a href="/">Landrick</a></li>
+                                <li class="breadcrumb-item"><a href="#">Page</a></li>
+                                <li class="breadcrumb-item"><a href="#">Careers</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Jobs</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+</section>
+<!--end section-->
+<!-- Hero End -->
+
+<!-- Shape Start -->
+<div class="position-relative">
+    <div class="shape overflow-hidden text-white">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+<!--Shape End-->
+
+<!-- Job List Start -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="border-bottom">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-8">
+                            <div class="section-title">
+                                <h4 class="title mb-2">All Jobs</h4>
+                                <p class="text-muted mb-0">Most Relevance Job</p>
+                            </div>
+                        </div>
+                        <!--end col-->
+
+
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+        <div class="row">
+
+            {% for job in jobs %}
+            <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+                <div class="card job-box rounded shadow border-0 overflow-hidden">
+                    <div class="border-bottom">
+                        <h5 class="mb-0 position"><a href="" class="text-dark">Designation:{{ job.designation|title }}</a>
+                        </h5>
+                    </div>
+
+                    <div class="card-body content position-relative">
+
+                        <div class="company-detail text-center mt-3">
+                            <h5 class="mb-0"><a href="page-job-company.html"
+                                    class="text-dark company-name">Company Name:{{ job.company_name|title }}</a></h5>
+                        </div>
+                        <ul class="job-facts list-unstyled">
+                            <li class="list-inline-item text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-check fea icon-sm text-success mr-1">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> {{ job.yrs_of_exp }} Year Expirence</li>
+                                <li class="list-inline-item "><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-check fea icon-sm text-success mr-1">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> {{ job.referal_code }} Referal Code</li>
+
+                        </ul>
+                        <a href="page-job-detail.html" class="btn btn-outline-primary btn-block">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+            {% endfor %}
+
+
+            <!-- PAGINATION START -->
+            <div class="col-12 mt-4 pt-2">
+                <ul class="pagination justify-content-center mb-0">
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous">Prev</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next">Next</a></li>
+                </ul>
+            </div>
+            <!--end col-->
+            <!-- PAGINATION END -->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+</section>
+<!--end section-->
+<!-- Job List End -->
+
+
+{% endblock body %}
