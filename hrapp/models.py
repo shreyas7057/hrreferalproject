@@ -7,7 +7,7 @@ class Jobpost(models.Model):
     designation = models.CharField(max_length=30)
     yrs_of_exp = models.IntegerField()
     company_name = models.CharField(max_length=100,blank=True,null=True)
-    referal_code = models.IntegerField(unique=True,blank=True,null=True)
+    referal_code = models.CharField(max_length=8,unique=True,blank=True,null=True)
     resume = models.FileField(upload_to='resume/')
 
 

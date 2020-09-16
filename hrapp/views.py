@@ -1,16 +1,21 @@
-from django.shortcuts import render,redirect,HttpResponseRedirect
+from django.shortcuts import render,redirect,HttpResponseRedirect,HttpResponse
 from .forms import SignupForm,JobpostForm
 from .models import Jobpost
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,logout,login
 from django.urls import reverse
 import random
+from django.utils.crypto import get_random_string
 
 
 
 # Create your views here.
 def index(request):
     return render(request,'hrapp/index.html')
+
+
+def profile(request):
+    return render(request,"hrapp/profile.html")
 
 
 def signup(request):
@@ -68,7 +73,7 @@ def create_jobpost_view(request):
             if fm.is_valid():
                 referal = fm.save(commit=False)
                 referal.user = request.user
-                referal.referal_code = random.randint(1000,10000)
+                referal.referal_code = get_random_string(length=8) #random.randint(1000,10000)
                 referal.save()
                 return redirect('display_jobpost')
 
