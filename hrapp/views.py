@@ -15,7 +15,15 @@ def index(request):
 
 
 def profile(request):
-    return render(request,"hrapp/profile.html")
+    if not request.user.is_authenticated:
+        return redirect('login_user')
+    else:
+        
+        jobs = Jobpost.objects.filter(user=request.user)
+        context = {
+            'jobs':jobs
+        }
+        return render(request,"hrapp/profile.html",context)
 
 
 def signup(request):
@@ -24,7 +32,7 @@ def signup(request):
 
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('login_user')
     
     else:
         form = SignupForm()
@@ -86,5 +94,6 @@ def create_jobpost_view(request):
 def display_jobpost(request):
 
     jobposts = Jobpost.objects.all()
+    
 
-    return render(request,'hrapp/joblisting.html',{'jobs':jobposts})
+    return render(request,'hrapp/joblisting2.html',{'jobs':jobposts})

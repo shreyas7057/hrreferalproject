@@ -9,6 +9,7 @@ class Jobpost(models.Model):
     company_name = models.CharField(max_length=100,blank=True,null=True)
     referal_code = models.CharField(max_length=8,unique=True,blank=True,null=True)
     resume = models.FileField(upload_to='resume/')
+    
 
 
     def __str__(self):
