@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate,logout,login
 from django.urls import reverse
 import random
 from django.utils.crypto import get_random_string
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 
@@ -97,3 +99,24 @@ def display_jobpost(request):
     
 
     return render(request,'hrapp/joblisting2.html',{'jobs':jobposts})
+
+
+
+def sendmail(request):
+    #referal_code = Jobpost.objects.get(id=id)
+
+    #jobs = Jobpost.objects.get(id=id)
+    #receiver_email = request.user.email
+    emails = User.objects.filter(is_active=True).values_list('email', flat=True)
+    from_email = settings.EMAIL_HOST_USER
+    subject = 'Selection EMail'
+    message = 'Congrulations'
+    send_mail(
+        subject,
+        message,
+        from_email,
+        [emails],
+        fail_silently=False
+    )
+
+    return HttpResponse("Send Successfully")

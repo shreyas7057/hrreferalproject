@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from hrapp.views import index,signup,login_user,logout_user,create_jobpost_view,display_jobpost,profile
+from hrapp.views import index,signup,login_user,logout_user,create_jobpost_view,display_jobpost,profile,sendmail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     path('jobapply/form/',create_jobpost_view,name="jobapply_form"),
     path('jobs/',display_jobpost,name="display_jobpost"),
     path('profile/',profile,name="profile"),
+    path('sendmail/',sendmail,name="sendmail"),
 ]
 urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

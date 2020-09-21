@@ -13,6 +13,9 @@
         <th scope="col">Yrs Of Exp</th>
         <th scope="col">Company Name</th>
         <th scope="col">Referal Code</th>
+        {% if user.is_superuser %}
+        <th scope="col">Send Mail</th>
+        {% endif %}
       </tr>
     </thead>
     <tbody>
@@ -25,6 +28,9 @@
         <td>{{ job.yrs_of_exp }}</td>
         <td>{{ job.company_name }}</td>
         <td>{{ job.referal_code }}</td>
+        {% if user.is_superuser %}
+        <td><a href="{% url 'sendmail' %}">Apply</a></th>
+        {% endif %}
       </tr>
       {% endfor %}
       
