@@ -1,0 +1,50 @@
+Technology Preferences: Laravel or Python framework
+
+Major Skills required: upload video to S3 and securely accessible only on our website. No public access & no download
+
+Note:
+1. Should follow standard coding standards
+2. Need documentation & help for configuration for setup on our server.
+3. Responsive website
+4. Latest framework version
+5. DB design need to be done with migration script
+
+Features: (Estimation around 50-60 hours of work)
+General features
+1. home page (category and keyword filter + new video + upcoming videos) 
+2. Detail screen with login/register option
+3. Login/Register (Two types account - presenter & viewers) + verification
+4. reminder email
+5, new session available email
+6. Video need to upload to S3. securely accessible inside app
+7. log data - which user, when viewed, which video, duration watched.
+8. Privacy policy, terms & condition . about us, 
+
+
+For presenter:
+1. Dashboard - video count, subscriber count, 
+2. Upload video screen with meta & schedule,thumbnail , link to category,set expiry, enable/disable comments, publish/unpublish
+3. View details - views, comments 
+4. Video list - with few actions - view, publish/unpublish, edit, delete , set expiry, enable/disable comments
+5. Invite Users
+6. Update profile + bio + profile pic
+
+For viewers:
+
+- Subscribe to this user
+- Upcoming sessions
+- Notify me
+- Comment
+- share whatsapp, fb, twitter
+- like/unlike
+- choose favourite categories
+
+
+Admin
+- login- logout
+- view all users
+- view all videos + comments
+- block users, block video, approve video
+
+note:
+If you have any question/assumption about requirements please send while sending quotes.

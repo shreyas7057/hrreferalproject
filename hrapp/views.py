@@ -8,6 +8,7 @@ import random
 from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
 from django.conf import settings
+from django.db.models import Q
 
 
 
@@ -107,7 +108,7 @@ def sendmail(request):
 
     #jobs = Jobpost.objects.get(id=id)
     #receiver_email = request.user.email
-    emails = User.objects.filter(is_active=True).values_list('email', flat=True)
+    emails = User.objects.get(is_active=True).values_list('email', flat=True)
     from_email = settings.EMAIL_HOST_USER
     subject = 'Selection EMail'
     message = 'Congrulations'
@@ -120,3 +121,24 @@ def sendmail(request):
     )
 
     return HttpResponse("Send Successfully")
+
+
+def search_title_company(request):
+    query = request.GET.get('q','')
+    if query:
+            queryset = (Q(company_name__icontains=query)|Q(designation__icontains=query))
+            results = Jobpost.objects.filter(queryset).distinct()
+    else:
+       results = []
+    return render(request, 'hrapp/search_title_company.html', {'results':results, 'query':query})
+
+
+
+def search_place(request):
+    query = request.GET.get('q','')
+    if query:
+            queryset = (Q(place=query))
+            results = Jobpost.objects.filter(queryset).distinct()
+    else:
+       results = []
+    return render(request, 'hrapp/search_place.html', {'results':results, 'query':query})

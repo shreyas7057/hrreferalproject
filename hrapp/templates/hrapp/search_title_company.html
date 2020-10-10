@@ -4,11 +4,9 @@
 
 {% block body %}
 
-<form class="form-inline my-2 my-lg-0" name="myform" method="GET" action="{% url 'search_place' %}">
-  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="q">
-  <input type="submit"  value="Search" class="btn btn-outline-success my-2 my-sm-0"/>
-</form>
 
+{% if query %}
+{% if results %}
 <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -25,7 +23,7 @@
     </thead>
     <tbody>
 
-    {% for job in jobs %}
+    {% for job in results %}
       <tr>
         <th scope="row">{{ forloop.counter }}</th>
         <td>{{ job.user.first_name }} {{ job.user.last_name }}</td>
@@ -41,7 +39,12 @@
       
     </tbody>
   </table>
-  
+
+  {% else %}
+  <h1 class="custom_h1">No Search result found....</h1>
+
+{% endif %}
+{% endif %}
 
 
 
